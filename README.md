@@ -14,7 +14,7 @@ Since I made this module to work in conjunction with the [MMM-ProfileSwitcher] y
 You can read more information about how to install it on it's github page.
 
 **Note:** it is also possible to use this module in conjunction with other modules since it only uses notifications,
-if a module supports this navigation is up to the maker. More information about this in [Notes For Other Developers](#Notes-For-Other-Developers).
+if a module supports this navigation is up to the maker. More information about this in [Notes For Other Developers](#notes-for-other-developers).
 
 After installing the [MMM-ProfileSwitcher].
 
@@ -53,7 +53,7 @@ The following properties can be configured:
 | `minHeight`       | The minimum height for all the buttons. <br><br> **Possible values:** `css length` <br> **Default value:** `0px`
 | `symbolPlacement` | The location of the symbol relative to the text. <br><br> **Possible values:** `left`, `right`, `top` or `bottom` <br> **Default value:** `left`
 | `direction`       | The direction of the menu. <br><br> **Possible values:** `row`, `column`, `row-reverse` or `column-reverse`<br> **Default value:** `row`
-| `buttons`         | All the different buttons in the menu. <br><br> **Possible values:** a button configuration, see [Configuring Buttons](#Configuring-Buttons) <br> **Default value:** some example buttons
+| `buttons`         | All the different buttons in the menu. <br><br> **Possible values:** a button configuration, see [Configuring Buttons](#configuring-buttons) <br> **Default value:** some example buttons
 
 
 ## Configuring Buttons
@@ -62,7 +62,7 @@ Buttons have to be placed in `buttons` in the `config`. A button contains a prof
 | Option   | Description
 | -------- | -----------
 | `text`   | A string to display in the button. <br><br> **Note:** if no value is set no text will be displayed. <br> **Possible values:** `string`
-| `symbol` | A symbol to display in the button. <br><br> **Note:** if no value is set no symbol will be displayed. <br> **Possible values:** See [Font Awesome](fontawesome.io/icons) website
+| `symbol` | A symbol to display in the button. <br><br> **Note:** if no value is set no symbol will be displayed. <br> **Possible values:** See [Font Awesome](http://fontawesome.io/icons/) website
 
 An example:
 ````javascript
@@ -86,7 +86,7 @@ buttons: {
 ## Notes
 * Profile name is case sensitive.
 * If both the `text` and `symbol` aren't set for a button then the button won't contain anything, but still show the border.
-* The symbols are all form the [Font Awesome](fontawesome.io/icons) website.
+* The symbols are all form the [Font Awesome](http://fontawesome.io/icons/) website.
 * The text may contain HTML tags and will be displayed as HTML.
 
 ## Notes For Other Developers
