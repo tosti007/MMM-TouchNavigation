@@ -1,0 +1,43 @@
+/*****************************************************
+ * Magic Mirror                                      *
+ * Custom CSS for MMM-TouchNavigation                *
+ *                                                   *
+ * By Brian Janssen                                  *
+ * MIT Licensed.                                     *
+ *                                                   *
+ *****************************************************/
+.navigation-menu {
+    display: flex;
+    align-items: stretch;
+}
+
+.navigation-button {
+    /* Border */
+    border-style: solid;
+    border-width: 2px;
+    border-color: #999;
+    border-radius: 5px;
+
+    /* as container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 7px;
+    padding: 5px 12px;
+}
+
+.navigation-symbol {
+    margin: 5px 0;
+}
+
+.navigation-text {
+    margin: -5px 0;
+}
+
+.navigation-button.current-profile {
+    border-color: #666;
+    background-color: rgba(255, 255, 255, 0.08);
+    /* basically the same as background-color: #111; but then with a opacity */
+    color: #fff;
+}
