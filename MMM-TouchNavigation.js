@@ -38,11 +38,29 @@ Module.register("MMM-TouchNavigation", {
         return ["font-awesome.css", this.file('MMM-TouchNavigation.css')];
     },
 
+    start: function () {
+        Log.info("Starting module: " + this.name);
+        this.selected = [];
+    },
+
     // Override the default NotificationRecieved function
     notificationReceived: function (notification, payload, sender) {
         if (notification === "CHANGED_PROFILE") {
-            this.selected = payload.to;
+            this.selected = [payload.to];
             this.updateDom(0);
+            return;
+        }
+
+        if (notification === "ADDED_PROFILE") {
+            this.selected.push(payload);
+            this.updateDom(0);
+            return;
+        }
+
+        if (notification === "REMOVED_PROFILE") {
+            this.selected.splice(this.selected.indexOf(payload), 1);
+            this.updateDom(0);
+            return;
         }
     },
 
@@ -67,8 +85,21 @@ Module.register("MMM-TouchNavigation", {
         item.style.minWidth = self.config.minWidth;
         item.style.minHeight = self.config.minHeight;
         
-        if (self.selected === name) {
+        if (self.selected.includes(name)) {
             item.className += " current-profile";
+            if (data.type === "add") {
+                item.addEventListener("click", function () {
+                    self.sendNotification("REMOVE_PROFILE", name);
+                });
+            }
+        } else if (data.type === "add") {
+            item.addEventListener("click", function () {
+                self.sendNotification("ADD_PROFILE", name);
+            });
+        } else {
+            item.addEventListener("click", function () {
+                self.sendNotification("CURRENT_PROFILE", name);
+            });
         }
 
         item.style.flexDirection = {
@@ -81,10 +112,6 @@ Module.register("MMM-TouchNavigation", {
         if (!self.config.showBorder) {
             item.style.borderColor = "black";
         }
-
-        item.addEventListener("click", function () {
-            self.sendNotification("CURRENT_PROFILE", name);
-        });
 
         if (data.symbol) {
             var symbol = document.createElement("span");
