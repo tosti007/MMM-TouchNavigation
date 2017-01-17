@@ -6,6 +6,9 @@
  * MIT Licensed.                                     *
  *                                                   *
  *****************************************************/
+.region.fullscreen {
+    pointer-events: none;
+}
 .navigation-menu {
     display: flex;
     align-items: stretch;
