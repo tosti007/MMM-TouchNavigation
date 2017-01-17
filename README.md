@@ -1,6 +1,6 @@
 <!-- All the links I use multiple times in this readme file, this way I won't have to copy paste so often -->
-[MMM-ProfileSwitcher]: (https://github.com/tosti007/MMM-ProfileSwitcher)
-[MMM-TouchNavigation]: (https://github.com/tosti007/MMM-TouchNavigation)
+[MMM-ProfileSwitcher]: https://github.com/tosti007/MMM-ProfileSwitcher
+[MMM-TouchNavigation]: https://github.com/tosti007/MMM-TouchNavigation
 
 
 # MMM-TouchNavigation
