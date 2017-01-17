@@ -83,6 +83,9 @@ buttons: {
 }
 ````
 
+## An Example Module Configuration
+An example configuration file has been added to this repository, file `example-config.js`.
+
 ## Notes
 * **Important:** unfortunatly positioning this module as fullscreen will result in the menu floating top left. I currently do not know how to fix this but will look into it. If you know how don't hesitate to either write me or send me a pull request!
 * Profile name is case sensitive.
