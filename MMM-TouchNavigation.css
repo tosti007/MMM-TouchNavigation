@@ -7,14 +7,16 @@
  *                                                   *
  *****************************************************/
 .region.fullscreen {
-    pointer-events: none;
+    z-index: -1;
 }
+
 .navigation-menu {
     display: flex;
     align-items: stretch;
 }
 
 .navigation-button {
+    z-index: 1;
     /* Border */
     border-style: solid;
     border-width: 2px;
