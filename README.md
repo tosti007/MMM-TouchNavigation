@@ -7,6 +7,7 @@
 
 This an extension for the [MagicMirror²](https://magicmirror.builders/).
 This Module adds a touch menu to switch between different profiles from the [MMM-ProfileSwitcher].
+Thanks to shashank for his input in the module and testing.
 
 ## Installation
 
