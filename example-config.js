@@ -24,16 +24,21 @@ var config = {
             position: "bottom_center",
             classes: "default everyone",
             config: {
+                picturePlacement: "right",
+                minWidth: "40px",
                 buttons: {
                     "default": {
                         symbol: "ban"
                     },
                     "Brian": {
                         text: " Brian",
-                        symbol: "paper-plane"
+                        // img can be a url or a local path.
+                        img: "https://forum.magicmirror.builders/uploads/profile/2349-profileimg.png", 
+                        width: "40"
                     },
                     "Lisa": {
-                        text: "Lisa"
+                        text: "Lisa",
+                        symbol: "paper-plane"
                     }
                 }
             }
