@@ -90,11 +90,23 @@ Module.register("MMM-TouchNavigation", {
             var symbol = document.createElement("span");
             symbol.className = "navigation-symbol fa fa-" + data.symbol;
 
-            if (data.text && data.symbol && placement === "left") {
+            if (data.text && placement === "left") {
                 symbol.style.marginRight = "10px";
             }
 
             item.appendChild(symbol);
+        } else if (data.img) {
+            var image = document.createElement("img");
+            image.className = "navigation-symbol";
+            image.src = data.img;
+            if (data.width)  image.width  = data.width;
+            if (data.height) image.height = data.height;
+            
+            if (data.text && placement === "left") {
+                image.style.marginRight = "10px";
+            }
+
+            item.appendChild(image);
         }
 
         if (data.text) {
@@ -102,7 +114,7 @@ Module.register("MMM-TouchNavigation", {
             text.className = "navigation-text";
             text.innerHTML = data.text;
 
-            if (data.text && data.symbol && placement === "right") {
+            if ((data.symbol || data.img) && placement === "right") {
                 text.style.marginRight = "10px";
             }
 
