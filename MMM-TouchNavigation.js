@@ -89,6 +89,10 @@ Module.register("MMM-TouchNavigation", {
         if (data.symbol) {
             var symbol = document.createElement("span");
             symbol.className = "navigation-picture fa fa-" + data.symbol;
+            if (data.size) {
+                symbol.className += " fa-" + data.size;
+                symbol.className += data.size == 1 ? "g" : "x";
+            }
 
             if (data.text && placement === "left") {
                 symbol.style.marginRight = "10px";
