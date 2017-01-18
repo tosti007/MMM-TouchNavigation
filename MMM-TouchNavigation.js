@@ -17,7 +17,7 @@ Module.register("MMM-TouchNavigation", {
         // The minimum height for all the buttons.
         minHeight: "0px",
         // The location of the symbol relative to the text.
-        symbolPlacement: "left",
+        picturePlacement: "left",
         // The direction of the menu.
         direction: "row",
         // All the different buttons in the menu.
@@ -54,7 +54,7 @@ Module.register("MMM-TouchNavigation", {
         menu.style.flexDirection = this.config.direction;
 
         for (var name in this.config.buttons) {
-            menu.appendChild(this.createButton(this, name, this.config.buttons[name], this.config.symbolPlacement));
+            menu.appendChild(this.createButton(this, name, this.config.buttons[name], this.config.picturePlacement));
         }
 
         return menu;
@@ -69,6 +69,10 @@ Module.register("MMM-TouchNavigation", {
         
         if (self.selected === name) {
             item.className += " current-profile";
+        } else {
+            item.addEventListener("click", function () {
+                self.sendNotification("CURRENT_PROFILE", name);
+            });
         }
 
         item.style.flexDirection = {
@@ -82,19 +86,32 @@ Module.register("MMM-TouchNavigation", {
             item.style.borderColor = "black";
         }
 
-        item.addEventListener("click", function () {
-            self.sendNotification("CURRENT_PROFILE", name);
-        });
-
         if (data.symbol) {
             var symbol = document.createElement("span");
-            symbol.className = "navigation-symbol fa fa-" + data.symbol;
+            symbol.className = "navigation-picture fa fa-" + data.symbol;
+            if (data.size) {
+                symbol.className += " fa-" + data.size;
+                symbol.className += data.size == 1 ? "g" : "x";
+            }
 
-            if (data.text && data.symbol && placement === "left") {
+            if (data.text && placement === "left") {
                 symbol.style.marginRight = "10px";
             }
 
             item.appendChild(symbol);
+        } else if (data.img) {
+            var image = document.createElement("img");
+            image.className = "navigation-picture";
+            image.src = data.img;
+
+            if (data.width)  image.width  = data.width;
+            if (data.height) image.height = data.height;
+            
+            if (data.text && placement === "left") {
+                image.style.marginRight = "10px";
+            }
+
+            item.appendChild(image);
         }
 
         if (data.text) {
@@ -102,7 +119,7 @@ Module.register("MMM-TouchNavigation", {
             text.className = "navigation-text";
             text.innerHTML = data.text;
 
-            if (data.text && data.symbol && placement === "right") {
+            if ((data.symbol || data.img) && placement === "right") {
                 text.style.marginRight = "10px";
             }
 
