@@ -24,19 +24,21 @@ var config = {
             position: "bottom_center",
             classes: "default everyone",
             config: {
+                picturePlacement: "right",
+                minWidth: "40px",
                 buttons: {
                     "default": {
                         symbol: "ban"
                     },
                     "Brian": {
                         text: " Brian",
-                        symbol: "paper-plane"
+                        // img can be a url or a local path.
+                        img: "https://forum.magicmirror.builders/uploads/profile/2349-profileimg.png", 
+                        width: "40"
                     },
                     "Lisa": {
                         text: "Lisa",
-                        // img can be a url or any local path withing you ~/MagicMirror folder.
-                        img: "https://forum.magicmirror.builders/uploads/profile/2349-profileimg.png", 
-                        height: "30"
+                        symbol: "paper-plane"
                     }
                 }
             }
