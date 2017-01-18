@@ -33,7 +33,10 @@ var config = {
                         symbol: "paper-plane"
                     },
                     "Lisa": {
-                        text: "Lisa"
+                        text: "Lisa",
+                        // img can be a url or any local path withing you ~/MagicMirror folder.
+                        img: "https://forum.magicmirror.builders/uploads/profile/2349-profileimg.png", 
+                        height: "30"
                     }
                 }
             }
