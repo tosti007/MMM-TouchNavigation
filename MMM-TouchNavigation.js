@@ -69,6 +69,10 @@ Module.register("MMM-TouchNavigation", {
         
         if (self.selected === name) {
             item.className += " current-profile";
+        } else {
+            item.addEventListener("click", function () {
+                self.sendNotification("CURRENT_PROFILE", name);
+            });
         }
 
         item.style.flexDirection = {
@@ -81,10 +85,6 @@ Module.register("MMM-TouchNavigation", {
         if (!self.config.showBorder) {
             item.style.borderColor = "black";
         }
-
-        item.addEventListener("click", function () {
-            self.sendNotification("CURRENT_PROFILE", name);
-        });
 
         if (data.symbol) {
             var symbol = document.createElement("span");
@@ -99,6 +99,7 @@ Module.register("MMM-TouchNavigation", {
             var image = document.createElement("img");
             image.className = "navigation-picture";
             image.src = data.img;
+
             if (data.width)  image.width  = data.width;
             if (data.height) image.height = data.height;
             
