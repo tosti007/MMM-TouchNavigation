@@ -46,6 +46,15 @@ Module.register("MMM-TouchNavigation", {
     }
   },
 
+  start: function() {
+    this.config.picturePlacement = {
+      "right": "row-reverse",
+      "left": "row",
+      "top": "column",
+      "bottom": "column-reverse"
+    }[this.config.picturePlacement];
+  },
+
   // Override dom generator.
   getDom: function() {
     var menu = document.createElement("span");
@@ -54,18 +63,19 @@ Module.register("MMM-TouchNavigation", {
     menu.style.flexDirection = this.config.direction;
 
     for (var name in this.config.buttons) {
-      menu.appendChild(this.createButton(this, name, this.config.buttons[name], this.config.picturePlacement));
+      menu.appendChild(this.createButton(this, name, this.config.buttons[name]));
     }
 
     return menu;
   },
 
-  createButton: function(self, name, data, placement) {
+  createButton: function(self, name, data) {
     var item = document.createElement("span");
     item.id = self.identifier + "_button_" + name;
     item.className = "navigation-button";
     item.style.minWidth = self.config.minWidth;
     item.style.minHeight = self.config.minHeight;
+    item.style.flexDirection = self.config.picturePlacement;
 
     if (self.selected === name) {
       item.className += " current-profile";
@@ -74,13 +84,6 @@ Module.register("MMM-TouchNavigation", {
         self.sendNotification("CURRENT_PROFILE", name);
       });
     }
-
-    item.style.flexDirection = {
-      "right": "row-reverse",
-      "left": "row",
-      "top": "column",
-      "bottom": "column-reverse"
-    }[placement];
 
     if (!self.config.showBorder) {
       item.style.borderColor = "black";
@@ -94,7 +97,7 @@ Module.register("MMM-TouchNavigation", {
         symbol.className += data.size == 1 ? "g" : "x";
       }
 
-      if (data.text && placement === "left") {
+      if (data.text && self.config.picturePlacement === "row") { // row = left
         symbol.style.marginRight = "10px";
       }
 
@@ -107,7 +110,7 @@ Module.register("MMM-TouchNavigation", {
       if (data.width) image.width = data.width;
       if (data.height) image.height = data.height;
 
-      if (data.text && placement === "left") {
+      if (data.text && self.config.picturePlacement === "row") { // row = left
         image.style.marginRight = "10px";
       }
 
@@ -119,7 +122,7 @@ Module.register("MMM-TouchNavigation", {
       text.className = "navigation-text";
       text.innerHTML = data.text;
 
-      if ((data.symbol || data.img) && placement === "right") {
+      if ((data.symbol || data.img) && self.config.picturePlacement === "row-reverse") { // right = row-reverse
         text.style.marginRight = "10px";
       }
 
